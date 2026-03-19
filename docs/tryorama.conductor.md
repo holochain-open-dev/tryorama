@@ -132,7 +132,7 @@ Install an application into the conductor.
 </td></tr>
 <tr><td>
 
-[setNetworkConfig(createConductorOptions)](./tryorama.conductor.setnetworkconfig.md)
+[setNetworkConfig(createConductorOptions, signalingServerUrl)](./tryorama.conductor.setnetworkconfig.md)
 
 
 </td><td>

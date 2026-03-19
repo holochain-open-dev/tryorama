@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-setNetworkConfig(createConductorOptions: NetworkConfig): void;
+setNetworkConfig(createConductorOptions: NetworkConfig, signalingServerUrl?: URL): void;
 ```
 
 ## Parameters
@@ -39,6 +39,22 @@ createConductorOptions
 
 
 </td><td>
+
+
+</td></tr>
+<tr><td>
+
+signalingServerUrl
+
+
+</td><td>
+
+URL
+
+
+</td><td>
+
+_(Optional)_
 
 
 </td></tr>

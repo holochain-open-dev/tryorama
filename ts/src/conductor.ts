@@ -146,18 +146,18 @@ type NetworkAdvancedK2GossipConfigYaml = Omit<
   "targetArcFactor" | "transportTimeoutS"
 >;
 
-interface NetworkAdvancedTx5TransportConfigYaml {
-  signalAllowPlainText: boolean;
-  timeoutS: number;
+interface NetworkAdvancedIrohTransportConfigYaml {
+  relayAllowPlainText: boolean;
 }
 
 interface ConductorConfigYaml {
   network: {
     advanced: {
       k2Gossip: NetworkAdvancedK2GossipConfigYaml;
-      tx5Transport: NetworkAdvancedTx5TransportConfigYaml;
+      irohTransport: NetworkAdvancedIrohTransportConfigYaml;
     };
     target_arc_factor: number;
+    signal_url?: string;
   };
 }
 
@@ -200,7 +200,7 @@ export const createConductor = async (
     "transportTimeoutS",
     "targetArcFactor",
   ]);
-  conductor.setNetworkConfig(networkConfig);
+  conductor.setNetworkConfig(networkConfig, signalingServerUrl);
   if (options?.startup !== false) {
     await conductor.startUp();
   }
@@ -245,7 +245,7 @@ export class Conductor {
     if (options?.bootstrapServerUrl) {
       args.push("--bootstrap", options.bootstrapServerUrl.href);
     }
-    args.push("webrtc");
+    args.push("quic");
     args.push(signalingServerUrl.href);
     defaultLogger.debug("spawning hc sandbox with args:", args);
     const createConductorProcess = spawn("hc", args);
@@ -273,7 +273,7 @@ export class Conductor {
     });
   }
 
-  setNetworkConfig(createConductorOptions: NetworkConfig) {
+  setNetworkConfig(createConductorOptions: NetworkConfig, signalingServerUrl?: URL) {
     const conductorConfig = readFileSync(
       `${this.conductorDir}/${CONDUCTOR_CONFIG}`,
       "utf-8",
@@ -292,6 +292,9 @@ export class Conductor {
     }
     conductorConfigYaml.network.target_arc_factor =
       createConductorOptions.targetArcFactor ?? 1;
+    if (signalingServerUrl) {
+      conductorConfigYaml.network.signal_url = signalingServerUrl.href;
+    }
     assert("advanced" in conductorConfigYaml.network);
     conductorConfigYaml.network.advanced = {
       k2Gossip: {
@@ -301,9 +304,8 @@ export class Conductor {
         initiateJitterMs: createConductorOptions.initiateJitterMs ?? 1_000,
         roundTimeoutMs: createConductorOptions.roundTimeoutMs ?? 5_000,
       },
-      tx5Transport: {
-        signalAllowPlainText: true,
-        timeoutS: createConductorOptions.transportTimeoutS ?? 15,
+      irohTransport: {
+        relayAllowPlainText: true,
       },
     };
     const yamlDump = yaml.dump(conductorConfigYaml);

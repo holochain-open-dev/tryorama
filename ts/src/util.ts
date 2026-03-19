@@ -172,7 +172,7 @@ export const dhtSync = async (
   players: PlayerApp[],
   dnaHash: DnaHash,
   intervalMs = 500,
-  timeoutMs = 40_000,
+  timeoutMs = 60_000,
 ) =>
   retryUntilCompleteOrTimeout(
     ({ players, dnaHash }) => {
@@ -242,7 +242,7 @@ export const storageArc = async (
   dnaHash: DnaHash,
   storageArc: DhtArc,
   intervalMs = 500,
-  timeoutMs = 40_000,
+  timeoutMs = 60_000,
 ) =>
   retryUntilCompleteOrTimeout(
     ({ player, dnaHash, storageArc }) =>
@@ -331,7 +331,7 @@ export const integratedOpsCount = async (
   cellId: CellId,
   targetIntegratedOpsCount: number,
   intervalMs = 500,
-  timeoutMs = 40_000,
+  timeoutMs = 60_000,
 ) =>
   retryUntilCompleteOrTimeout(
     async ({ player, cellId, targetIntegratedOpsCount }) => {

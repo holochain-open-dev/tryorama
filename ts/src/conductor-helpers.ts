@@ -51,7 +51,7 @@ export const runLocalServices = async () => {
           .split(BOOTSTRAP_SERVER_STARTUP_STRING)[1]
           .split("#")[0];
         const bootstrapServerUrl = new URL(`http://${listeningAddress}`);
-        const signalingServerUrl = new URL(`ws://${listeningAddress}`);
+        const signalingServerUrl = new URL(`http://${listeningAddress}`);
         logger.verbose(`bootstrap server url: ${bootstrapServerUrl}`);
         logger.verbose(`signaling server url: ${signalingServerUrl}`);
         resolve({
