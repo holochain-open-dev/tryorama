@@ -120,7 +120,6 @@ test("Set custom network config", async () => {
   const minInitiateIntervalMs = 20_000;
   const initiateJitterMs = 5_000;
   const roundTimeoutMs = 20_000;
-  const transportTimeoutS = 1_000;
   const targetArcFactor = 0;
 
   const alice = await scenario.addPlayerWithApp({
@@ -134,7 +133,6 @@ test("Set custom network config", async () => {
         minInitiateIntervalMs,
         initiateJitterMs,
         roundTimeoutMs,
-        transportTimeoutS,
         targetArcFactor,
       },
     },
@@ -158,15 +156,15 @@ test("Set custom network config", async () => {
   assert.strictEqual(network.target_arc_factor, targetArcFactor);
 
   assert.ok(
-    advanced && typeof advanced === "object" && "tx5Transport" in advanced,
+    advanced && typeof advanced === "object" && "irohTransport" in advanced,
   );
-  const { tx5Transport } = advanced;
+  const { irohTransport } = advanced;
   assert.ok(
-    tx5Transport &&
-      typeof tx5Transport === "object" &&
-      "timeoutS" in tx5Transport,
+    irohTransport &&
+      typeof irohTransport === "object" &&
+      "relayAllowPlainText" in irohTransport,
   );
-  assert.strictEqual(tx5Transport.timeoutS, transportTimeoutS);
+  assert.strictEqual(irohTransport.relayAllowPlainText, true);
 
   assert.ok(advanced && typeof advanced === "object" && "k2Gossip" in advanced);
   const { k2Gossip } = advanced;
@@ -192,7 +190,6 @@ test("Default network config", async () => {
   const minInitiateIntervalMs = 3_000;
   const initiateJitterMs = 1_000;
   const roundTimeoutMs = 5_000;
-  const transportTimeoutS = 15;
   const targetArcFactor = 1;
 
   const alice = await scenario.addPlayerWithApp({
@@ -220,15 +217,15 @@ test("Default network config", async () => {
   assert.strictEqual(network.target_arc_factor, targetArcFactor);
 
   assert.ok(
-    advanced && typeof advanced === "object" && "tx5Transport" in advanced,
+    advanced && typeof advanced === "object" && "irohTransport" in advanced,
   );
-  const { tx5Transport } = advanced;
+  const { irohTransport } = advanced;
   assert.ok(
-    tx5Transport &&
-      typeof tx5Transport === "object" &&
-      "timeoutS" in tx5Transport,
+    irohTransport &&
+      typeof irohTransport === "object" &&
+      "relayAllowPlainText" in irohTransport,
   );
-  assert.strictEqual(tx5Transport.timeoutS, transportTimeoutS);
+  assert.strictEqual(irohTransport.relayAllowPlainText, true);
 
   assert.ok(advanced && typeof advanced === "object" && "k2Gossip" in advanced);
   const { k2Gossip } = advanced;

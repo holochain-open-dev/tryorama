@@ -50,7 +50,7 @@ test("Conductor with custom bootstrap server", async () => {
 });
 
 test("Conductor with custom signaling server", async () => {
-  const signalingServerUrl = new URL("ws://some-signal.server:1234");
+  const signalingServerUrl = new URL("http://some-signal.server:1234");
   const conductor = await createConductor(signalingServerUrl, {
     startup: false,
   });

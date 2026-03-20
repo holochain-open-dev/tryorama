@@ -273,7 +273,10 @@ export class Conductor {
     });
   }
 
-  setNetworkConfig(createConductorOptions: NetworkConfig, signalingServerUrl?: URL) {
+  setNetworkConfig(
+    createConductorOptions: NetworkConfig,
+    signalingServerUrl?: URL,
+  ) {
     const conductorConfig = readFileSync(
       `${this.conductorDir}/${CONDUCTOR_CONFIG}`,
       "utf-8",
