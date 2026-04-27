@@ -25,6 +25,9 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rimraf ./lib && tsc && npm run build:docs",
     "build:docs": "api-extractor run --local && api-documenter markdown -i docs/temp -o docs",
