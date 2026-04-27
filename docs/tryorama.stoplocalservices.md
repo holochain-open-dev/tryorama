@@ -45,6 +45,7 @@ ChildProcessWithoutNullStreams
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;number \| null&gt; \| null

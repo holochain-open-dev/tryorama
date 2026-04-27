@@ -47,6 +47,7 @@ The number of milliseconds to wait.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;unknown&gt;

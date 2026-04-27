@@ -47,3 +47,4 @@ _(Optional)_ Timeout for requests to Admin and App API calls.
 
 </td></tr>
 </tbody></table>
+

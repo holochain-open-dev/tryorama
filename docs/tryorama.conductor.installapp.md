@@ -45,6 +45,7 @@ appWithOptions
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;import("@holochain/client").AppInfo&gt;

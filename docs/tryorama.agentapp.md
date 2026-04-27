@@ -104,3 +104,4 @@ Map&lt;RoleName, [CallableCell](./tryorama.callablecell.md)<!-- -->&gt;
 
 </td></tr>
 </tbody></table>
+

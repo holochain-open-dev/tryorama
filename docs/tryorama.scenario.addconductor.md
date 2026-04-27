@@ -63,6 +63,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;[Conductor](./tryorama.conductor.md)<!-- -->&gt;

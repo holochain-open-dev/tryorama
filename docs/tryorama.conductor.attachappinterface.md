@@ -47,6 +47,7 @@ _(Optional)_ Specify a port for the web socket (optional).
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;number&gt;

@@ -76,6 +76,7 @@ Cell to bind zome call function to.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 { callZome: &lt;T&gt;(request: [CellZomeCallRequest](./tryorama.cellzomecallrequest.md)<!-- -->, timeout?: number) =&gt; Promise&lt;T&gt;; cell\_id: import("@holochain/client").CellId; clone\_id: RoleName; original\_dna\_hash: import("@holochain/client").DnaHash; dna\_modifiers: import("@holochain/client").DnaModifiers; name: string; enabled: boolean; } \| { callZome: &lt;T&gt;(request: [CellZomeCallRequest](./tryorama.cellzomecallrequest.md)<!-- -->, timeout?: number) =&gt; Promise&lt;T&gt;; cell\_id: import("@holochain/client").CellId; dna\_modifiers: import("@holochain/client").DnaModifiers; name: string; }

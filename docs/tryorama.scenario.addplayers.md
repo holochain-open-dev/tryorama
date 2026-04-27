@@ -67,6 +67,7 @@ _(Optional)_ Optional [NetworkConfig](./tryorama.networkconfig.md)
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;[Player](./tryorama.player.md)<!-- -->\[\]&gt;

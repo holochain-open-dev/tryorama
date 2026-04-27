@@ -111,6 +111,7 @@ _(Optional)_ Timeout in milliseconds (default 40\_000).
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;void&gt;

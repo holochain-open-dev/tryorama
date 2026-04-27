@@ -63,6 +63,7 @@ The name of the Zome to call.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 &lt;T&gt;(fnName: string, payload?: unknown, timeout?: number) =&gt; Promise&lt;T&gt;

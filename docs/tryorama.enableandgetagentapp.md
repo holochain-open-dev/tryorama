@@ -79,6 +79,7 @@ The app info of the app to enable.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;[AgentApp](./tryorama.agentapp.md)<!-- -->&gt;

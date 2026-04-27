@@ -47,6 +47,7 @@ An array with an app for each player.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;[PlayerApp](./tryorama.playerapp.md)<!-- -->\[\]&gt;

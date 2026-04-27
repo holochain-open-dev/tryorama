@@ -47,6 +47,7 @@ Array of ConductorCells
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;boolean&gt;

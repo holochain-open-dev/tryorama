@@ -95,6 +95,7 @@ _(Optional)_ A timeout for the delay (defaults to 60000 milliseconds).
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;void&gt;

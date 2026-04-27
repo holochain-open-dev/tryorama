@@ -117,6 +117,7 @@ export const addAllAgentsToAllConductors = async (conductors: Conductor[]) => {
 };
 
 function assertZomeResponse<T>(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   response: CallZomeResponse,
 ): asserts response is T {
   return;

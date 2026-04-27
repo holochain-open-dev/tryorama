@@ -11,3 +11,8 @@ Start up conductor after creation.
 ```typescript
 startup?: boolean;
 ```
+
+## Default Value
+
+true
+

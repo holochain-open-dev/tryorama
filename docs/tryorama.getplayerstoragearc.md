@@ -63,6 +63,7 @@ The DNA to get the storage arc for.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;DhtArc&gt;

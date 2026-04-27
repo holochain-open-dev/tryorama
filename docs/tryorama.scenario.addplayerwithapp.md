@@ -47,6 +47,7 @@ appWithOptions
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;[PlayerApp](./tryorama.playerapp.md)<!-- -->&gt;

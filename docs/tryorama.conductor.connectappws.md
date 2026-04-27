@@ -63,6 +63,7 @@ The websocket port to connect to.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;AppWebsocket&gt;
