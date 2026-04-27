@@ -19,6 +19,8 @@ npm install @holochain/tryorama
 
 ## Compatibility
 
+**Tryorama v0.20.x** is compatible with **JS client v0.21.x** and **Holochain v0.7.x**.
+
 **Tryorama v0.19.x** is compatible with **JS client v0.20.x** and **Holochain v0.6.x**.
 
 **Tryorama v0.18.x** is compatible with **JS client v0.19.x** and **Holochain v0.5.x**.

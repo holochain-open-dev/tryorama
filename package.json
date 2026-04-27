@@ -1,7 +1,7 @@
 {
   "name": "@holochain/tryorama",
   "description": "Toolset to manage Holochain conductors and facilitate running test scenarios",
-  "version": "0.19.1",
+  "version": "0.20.0-dev.0",
   "author": "Holochain Foundation",
   "license": "MIT",
   "keywords": [
@@ -38,7 +38,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@holochain/client": "^0.20.0",
+    "@holochain/client": "^0.21.0-dev.2",
     "get-port": "^7.0.0",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
@@ -53,7 +53,6 @@
     "@msgpack/msgpack": "^3.1.1",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash": "^4.14.191",
-    "@types/ramda": "^0.30.0",
     "@types/uuid": "^10.0.0",
     "@types/ws": "^8.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",

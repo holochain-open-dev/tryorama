@@ -181,7 +181,7 @@ test("Install app with deferred memproofs", async () => {
           },
         },
       ],
-      membrane_proofs_deferred: true,
+      allow_deferred_memproofs: true,
     },
     resources: {
       dna_1: zippedDnaBundle,
@@ -206,8 +206,8 @@ test("Install app with deferred memproofs", async () => {
   let appInfo = await appWs.appInfo();
   assert.deepEqual(
     appInfo.status,
-    { type: "disabled", value: { type: "never_started" } },
-    "app status is never_started",
+    { type: "awaiting_memproofs" },
+    "app status is awaiting_memproofs",
   );
 
   const response = await appWs.provideMemproofs({});

@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Added
 ### Removed
 ### Changed
+- **BREAKING**: Upgraded to Holochain 0.7 and `@holochain/client` 0.21. Tryorama 0.20.x is compatible with Holochain 0.7.x.
 ### Fixed
 
 ## 2025-11-20: v0.19.0

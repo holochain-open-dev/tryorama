@@ -9,5 +9,4 @@ roles:
       deferred: false
     dna:
       path: ./entry.dna
-      version: ~
       clone_limit: 1
