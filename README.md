@@ -1,7 +1,7 @@
 [![Project](https://img.shields.io/badge/Project-Holochain-blue.svg?style=flat-square)](http://holochain.org/)
 [![Discord](https://img.shields.io/badge/Discord-DEV.HC-blue.svg?style=flat-square)](https://discord.gg/k55DS5dmPH)
 [![License: CAL 1.0](https://img.shields.io/badge/License-CAL%201.0-blue.svg)](https://github.com/holochain/cryptographic-autonomy-license)
-![Test](https://github.com/holochain/tryorama/actions/workflows/test.yml/badge.svg?branch=main)
+![Test](https://github.com/holochain-open-dev/tryorama/actions/workflows/test.yml/badge.svg?branch=main-0.7)
 
 # Tryorama
 
@@ -12,20 +12,22 @@ network. Included functions to clean up used resources make sure that all state
 is deleted between tests so that they are independent of one another.
 
 ```sh
-npm install @holochain/tryorama
+npm install @holochain-open-dev/tryorama
 ```
 
 [Complete API reference](./docs/tryorama.md)
 
 ## Compatibility
 
-**Tryorama v0.20.x** is compatible with **JS client v0.21.x** and **Holochain v0.7.x**.
+This is the [holochain-open-dev](https://github.com/holochain-open-dev) fork of Tryorama, published as `@holochain-open-dev/tryorama`. It tracks Holochain dev releases ahead of the upstream [`@holochain/tryorama`](https://www.npmjs.com/package/@holochain/tryorama) package.
 
-**Tryorama v0.19.x** is compatible with **JS client v0.20.x** and **Holochain v0.6.x**.
+**`@holochain-open-dev/tryorama` v0.20.x** is compatible with **JS client v0.21.x** and **Holochain v0.7.x**.
 
-**Tryorama v0.18.x** is compatible with **JS client v0.19.x** and **Holochain v0.5.x**.
+For earlier Holochain versions, use upstream [`@holochain/tryorama`](https://www.npmjs.com/package/@holochain/tryorama):
 
-**Tryorama v0.17.x** is compatible with **JS client v0.18.x** and **Holochain v0.4.x**.
+- **`@holochain/tryorama` v0.19.x** is compatible with **JS client v0.20.x** and **Holochain v0.6.x**.
+- **`@holochain/tryorama` v0.18.x** is compatible with **JS client v0.19.x** and **Holochain v0.5.x**.
+- **`@holochain/tryorama` v0.17.x** is compatible with **JS client v0.18.x** and **Holochain v0.4.x**.
 
 ## Example
 

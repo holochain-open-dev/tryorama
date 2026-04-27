@@ -19,7 +19,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[@holochain/tryorama](./tryorama.md)
+[@holochain-open-dev/tryorama](./tryorama.md)
 
 
 </td><td>

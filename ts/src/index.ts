@@ -1,7 +1,7 @@
 /**
  * Tryorama
  *
- * Tools for managing Holochain {@link @holochain/tryorama#Conductor | Conductors}\.
+ * Tools for managing Holochain {@link @holochain-open-dev/tryorama#Conductor | Conductors}\.
  *
  * @packageDocumentation
  */

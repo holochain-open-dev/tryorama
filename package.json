@@ -1,5 +1,5 @@
 {
-  "name": "@holochain/tryorama",
+  "name": "@holochain-open-dev/tryorama",
   "description": "Toolset to manage Holochain conductors and facilitate running test scenarios",
   "version": "0.20.0-dev.0",
   "author": "Holochain Foundation",
@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/holochain/tryorama"
+    "url": "git+https://github.com/holochain-open-dev/tryorama.git"
   },
   "type": "module",
   "engines": {
