@@ -9,6 +9,20 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Changed
 ### Fixed
 
+## 2026-05-14: v0.19.2
+
+### Changed
+- Upgrade to Holochain v0.6.1 (final): `hdi` v0.7.1, `hdk` v0.6.1, `holochain_serialized_bytes` v0.0.57.
+- Upgrade `@holochain/client` to v0.20.4.
+- Update Holonix flake inputs to track `holochain-0.6.1`.
+
+## 2026-03-19: v0.19.1
+
+### Changed
+- Switch network transport from WebRTC (`tx5Transport`) to QUIC (`irohTransport`) for Holochain 0.6 / kitsune2 compatibility.
+- Use `http://` scheme for the relay URL (required by iroh) and point `signal_url` at the local bootstrap server.
+- Increase the default `dhtSync` timeout to 60 s to accommodate kitsune2 gossip cadence.
+
 ## 2025-11-20: v0.19.0
 
 ### Added
