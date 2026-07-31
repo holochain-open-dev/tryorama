@@ -73,11 +73,11 @@ test("dhtSync - Create multiple entries, read the last, 2 conductors", async () 
     assert.equal(bobDump.integration_dump.integration_limbo.length, 0);
     assert.equal(bobDump.integration_dump.validation_limbo.length, 0);
 
-    // Alice has 52 ops integrated
-    assert.equal(aliceDump.integration_dump.integrated.length, 52);
+    // Alice has 53 ops integrated (incl. her own unpublished private-entry op)
+    assert.equal(aliceDump.integration_dump.integrated.length, 53);
 
-    // Bob has 52 ops integrated
-    assert.equal(bobDump.integration_dump.integrated.length, 52);
+    // Bob has 53 ops integrated (incl. his own unpublished private-entry op)
+    assert.equal(bobDump.integration_dump.integrated.length, 53);
   }));
 
 test("dhtSync - Fails if some Ops are not synced among all conductors", async () => {
@@ -167,7 +167,7 @@ test("integratedOpsCount - Succeeds when integrated Ops count matches", () =>
     await alice.conductor
       .adminWs()
       .authorizeSigningCredentials(alice.cells[0].cell_id);
-    await integratedOpsCount(alice, alice.cells[0].cell_id, 11);
+    await integratedOpsCount(alice, alice.cells[0].cell_id, 12);
 
     // Create an entry
     await alice.cells[0].callZome<string>({
@@ -177,7 +177,7 @@ test("integratedOpsCount - Succeeds when integrated Ops count matches", () =>
     });
 
     // This should integrate 3 more ops
-    await integratedOpsCount(alice, alice.cells[0].cell_id, 14);
+    await integratedOpsCount(alice, alice.cells[0].cell_id, 15);
 
     // Create a private entry
     await alice.cells[0].callZome<string>({
@@ -186,8 +186,9 @@ test("integratedOpsCount - Succeeds when integrated Ops count matches", () =>
       payload: "1",
     });
 
-    // This should integrate 2 more ops
-    await integratedOpsCount(alice, alice.cells[0].cell_id, 16);
+    // This should integrate 3 more ops (incl. the author-only CreateEntry op
+    // of the private entry)
+    await integratedOpsCount(alice, alice.cells[0].cell_id, 18);
   }));
 
 test("integratedOpsCount - Fails if timeout reached before integrated ops count matches", async () =>

@@ -8,6 +8,7 @@ import {
   getSigningCredentials,
   InstallAppRequest,
   RoleNameCallZomeRequest,
+  WsClient,
 } from "@holochain/client";
 import getPort, { portNumbers } from "get-port";
 import yaml from "js-yaml";
@@ -157,7 +158,7 @@ interface ConductorConfigYaml {
       irohTransport: NetworkAdvancedIrohTransportConfigYaml;
     };
     target_arc_factor: number;
-    signal_url?: string;
+    relay_url?: string;
   };
 }
 
@@ -296,7 +297,7 @@ export class Conductor {
     conductorConfigYaml.network.target_arc_factor =
       createConductorOptions.targetArcFactor ?? 1;
     if (signalingServerUrl) {
-      conductorConfigYaml.network.signal_url = signalingServerUrl.href;
+      conductorConfigYaml.network.relay_url = signalingServerUrl.href;
     }
     assert("advanced" in conductorConfigYaml.network);
     conductorConfigYaml.network.advanced = {
@@ -384,7 +385,11 @@ export class Conductor {
       this._adminWs = undefined;
     }
     if (this._appWs) {
-      await this._appWs.client.close();
+      // Since client 0.21.0-rc.1 the app client's transport may also be Tauri
+      // IPC; only websocket transports need to be closed.
+      if (this._appWs.client instanceof WsClient) {
+        await this._appWs.client.close();
+      }
       this._appWs = undefined;
     }
 

@@ -7,7 +7,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Added
 ### Removed
 ### Changed
-- **BREAKING**: Upgraded to Holochain 0.7 and `@holochain/client` 0.21. Tryorama 0.20.x is compatible with Holochain 0.7.x.
+### Fixed
+
+## 2026-07-31: v0.20.0
+
+### Added
+### Removed
+### Changed
+- **BREAKING**: Upgraded to Holochain 0.7.0 (stable) and `@holochain/client` ^0.21.0. Tryorama 0.20.x is compatible with Holochain 0.7.x.
+- Adapted to the restructured `DhtOp`/`ChainOp` data shapes of Holochain 0.7 (variants now carry a `SignedAction` of `{ data, signature }`; entry-bearing variants serialize as a `[signedAction, entry]` tuple, action-only variants as the bare signed action) and to the narrowed `AppWebsocket.client` transport type of client 0.21.
+- Renamed the generated conductor config field `signal_url` to `relay_url`, matching Holochain 0.7's move to the iroh transport. The local `kitsune2-bootstrap-srv` now serves as both bootstrap server and iroh relay.
+- `dhtSync` now excludes `CreateEntry` ops of private entries from the DHT state comparison. Since Holochain 0.7 these ops are integrated on the authoring conductor but never published, so conductors could never appear in sync once any private entry (e.g. a zome-call signing cap grant) existed.
 ### Fixed
 
 ## 2025-11-20: v0.19.0

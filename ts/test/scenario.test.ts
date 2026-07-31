@@ -510,19 +510,6 @@ test("runScenario - add players and then install the same app for them", async (
 
 test("runScenario - 0-arc conductor", async () => {
   await runScenario(async (scenario) => {
-    // Alice has a 0-arc conductor
-    const alice = await scenario.addPlayerWithApp({
-      appBundleSource: {
-        type: "path",
-        value: FIXTURE_HAPP_URL.pathname,
-      },
-      options: {
-        networkConfig: {
-          targetArcFactor: 0,
-        },
-      },
-    });
-
     // Bob and Sue have full-arc conductors
     const bob = await scenario.addPlayerWithApp({
       appBundleSource: {
@@ -534,6 +521,23 @@ test("runScenario - 0-arc conductor", async () => {
       appBundleSource: {
         type: "path",
         value: FIXTURE_HAPP_URL.pathname,
+      },
+    });
+
+    // Alice has a 0-arc conductor. She is created after the full-arc players,
+    // because a 0-arc conductor never gossips its own ops. If no authority is
+    // reachable when her genesis ops are first published, the ops only get
+    // republished after a back-off of at least a minute, which exceeds the
+    // dhtSync timeout below.
+    const alice = await scenario.addPlayerWithApp({
+      appBundleSource: {
+        type: "path",
+        value: FIXTURE_HAPP_URL.pathname,
+      },
+      options: {
+        networkConfig: {
+          targetArcFactor: 0,
+        },
       },
     });
 

@@ -49,8 +49,8 @@ test("Conductor with custom bootstrap server", async () => {
   await cleanAllConductors();
 });
 
-test("Conductor with custom signaling server", async () => {
-  const signalingServerUrl = new URL("http://some-signal.server:1234");
+test("Conductor with custom relay server", async () => {
+  const signalingServerUrl = new URL("http://some-relay.server:1234");
   const conductor = await createConductor(signalingServerUrl, {
     startup: false,
   });
@@ -58,7 +58,7 @@ test("Conductor with custom signaling server", async () => {
   const conductorConfig = readFileSync(`${tmpDirPath}/${CONDUCTOR_CONFIG}`, {
     encoding: "utf-8",
   });
-  assert.ok(conductorConfig.includes(`signal_url: ${signalingServerUrl.href}`));
+  assert.ok(conductorConfig.includes(`relay_url: ${signalingServerUrl.href}`));
 
   await cleanAllConductors();
 });

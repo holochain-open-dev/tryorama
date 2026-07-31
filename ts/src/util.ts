@@ -126,11 +126,22 @@ export const areConductorCellsDhtsSynced = async (
 
   // Compare conductors' integrated DhtOps
   const conductorDhtOpsIntegrated = conductorStates.map((conductor) => {
-    return sortBy(conductor.integration_dump.integrated, [
+    const publishedOps = conductor.integration_dump.integrated.filter((op) => {
+      if ("ChainOp" in op && "CreateEntry" in op.ChainOp) {
+        // CreateEntry ops of private entries (serialized as entry "Hidden")
+        // are stored only by their author and never published, so they can
+        // never appear on other conductors and must be excluded from the
+        // comparison.
+        const entry = op.ChainOp.CreateEntry[1];
+        return (entry as unknown) !== "Hidden";
+      }
+      return true;
+    });
+    return sortBy(publishedOps, [
       // There are chain and warrant ops
       (op) => {
         if ("ChainOp" in op) {
-          // Sort chain ops by op type (e. g. StoreEntry).
+          // Sort chain ops by op type (e. g. CreateEntry).
           return Object.keys(op.ChainOp)[0];
         } else {
           // Sort warrant ops by signature.
@@ -139,10 +150,14 @@ export const areConductorCellsDhtsSynced = async (
       },
       (op) => {
         if ("ChainOp" in op) {
-          // Secondly sort by chain op signature.
-          return Buffer.from(Object.values(op.ChainOp)[0][0]).toString(
-            "base64",
-          );
+          // Secondly sort by chain op signature. Each chain op variant carries a
+          // signed action shaped as `{ data, signature }`, whose signature is a
+          // stable per-op key. Variants with an associated entry serialize their
+          // payload as a `[signedAction, entry]` tuple, while variants with only
+          // an action serialize the signed action directly.
+          const payload = Object.values(op.ChainOp)[0];
+          const signedAction = Array.isArray(payload) ? payload[0] : payload;
+          return Buffer.from(signedAction.signature).toString("base64");
         } else {
           // Sorting by signatures is sufficient for warrant ops.
         }
